@@ -57,7 +57,6 @@ Organization
 Sass
 ----
 
-* Use the *Scss* syntax.
 * Use dashes when naming mixins, extends, classes or IDs: `span-columns` not `span_columns` or `spanColumns`.
 * Use descriptive names and write them in full-words: `$visual-grid-color` not `$color` or `$vslgrd-clr`.
 * Use space between property and value: `width: 20px` not `width:20px`.
@@ -104,13 +103,6 @@ Ruby
 * Use `each`, not `for`, for iteration.
 * Use heredocs for multi-line strings.
 
-ERb
----
-
-[Sample](samples/erb.rb)
-
-* When wrapping long lines, keep the method name on the same line as the ERb.
-  interpolation operator and keep each method argument on its own line.
 
 Rails
 -----

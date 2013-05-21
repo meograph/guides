@@ -3,64 +3,23 @@ Protocol
 
 A guide for getting things done.
 
-Set up laptop
+Set up a Meograph dev environment
 -------------
 
-Install the latest version of Xcode from the App Store.
+Clone the /demo repo. (https://github.com/meograph/demo)
+Install homebrew (https://github.com/mxcl/homebrew/wiki/installation) and ImageMagick dependency
 
-Set up your laptop with [this script](https://github.com/thoughtbot/laptop)
-and [these dotfiles](https://github.com/thoughtbot/dotfiles).
+    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+    brew install ImageMagick
 
-Create Rails app
-----------------
+Install RVM (https://rvm.io/rvm/install/) and app's Ruby dependencies
 
-Get Suspenders.
-
-    gem install suspenders
-
-Create the app.
-
-    suspenders app --heroku true --github organization/app
-
-Create iOS app
---------------
-
-Create a new project in Xcode with these settings:
-
-* Check 'Create local git repository for this project'.
-* Check 'Use Automatic Reference Counting'.
-* Set an appropriate 2 or 3 letter class prefix.
-* Set the Base SDK to 'Latest iOS'.
-* Set the iOS Deployment Target to 6.0.
-* Use the Apple LLVM compiler.
-
-Get liftoff.
-
-    gem install liftoff
-
-Run liftoff in the project directory.
-
-    liftoff
-
-Set up Rails app
-----------------
-
-Get the code.
-
-    git clone git@github.com:organization/app.git
-
-Set up the app's dependencies.
-
-    cd project
-    ./bin/setup
-
-Use [Heroku config](https://github.com/ddollar/heroku-config) to get `ENV`
-variables.
-
-    heroku config:pull --remote staging
-
-Delete extra lines in `.env`, leaving only those needed for app to function
-properly. For example: `BRAINTREE_MERCHANT_ID` and `S3_SECRET`.
+    curl -L get.rvm.io | bash -s stable
+    rvm install ruby-1.9.3-p392
+    rvm use 1.9.3
+    gem install bundler
+    bundle install
+    rake db:setup
 
 Use [Foreman](http://goo.gl/oy4uw) to run the app locally.
 
@@ -69,15 +28,6 @@ Use [Foreman](http://goo.gl/oy4uw) to run the app locally.
 It uses your `.env` file and `Procfile` to run processes just like Heroku's
 [Cedar](https://devcenter.heroku.com/articles/cedar/) stack.
 
-Maintain a Rails app
---------------------
-
-* Avoid including files in source control that are specific to your
-  development machine or process.
-* Delete local and remote feature branches after merging.
-* Perform work in a feature branch.
-* Rebase frequently to incorporate upstream changes.
-* Use a [pull request](http://goo.gl/Kmdee) for code reviews.
 
 Write a feature
 ---------------
@@ -169,50 +119,3 @@ Delete your remote feature branch.
 Delete your local feature branch.
 
     git branch --delete <branch-name>
-
-Deploy
-------
-
-View a list of new commits. View changed files. Deploy to
-[Heroku](https://devcenter.heroku.com/articles/quickstart) staging.
-
-    git fetch staging
-    git log staging/master..master
-    git diff --stat staging/master
-    git push staging
-
-If necessary, run migrations and restart the dynos.
-
-    heroku run rake db:migrate --remote staging
-    heroku restart --remote staging
-
-[Introspect](http://goo.gl/tTgVF) to make sure everything's ok.
-
-    watch heroku ps --remote staging
-
-Test the feature in browser.
-
-Deploy to production.
-
-    git fetch production
-    git log production/master..master
-    git diff --stat production/master
-    git push production
-    heroku run rake db:migrate --remote production
-    heroku restart --remote production
-    watch heroku ps --remote production
-
-Watch logs and metrics dashboards.
-
-Close pull request and comment `Merged.`
-
-Set Up Production Environment
------------------------------
-
-* Make sure that your
-  [`Procfile`](https://devcenter.heroku.com/articles/procfile)
-  is set up to run Unicorn.
-* Make sure the PG Backups add-on is enabled.
-* Create a read-only [Heroku Follower](http://goo.gl/xWDMx) for your
-  production database. If a Heroku database outage occurs, Heroku can use the
-  follower to get your app back up and running faster.

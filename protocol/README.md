@@ -68,7 +68,7 @@ Share your branch.
 
     git push origin <branch-name>
 
-Submit a [GitHub pull request](http://goo.gl/Kmdee).
+Submit a [GitHub pull request](http://goo.gl/Kmdee). Include a link to the Asana ticket with the feature discussion.
 
 Ask for a code review in [Campfire](http://campfirenow.com).
 

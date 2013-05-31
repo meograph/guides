@@ -21,12 +21,16 @@ Install RVM (https://rvm.io/rvm/install/) and app's Ruby dependencies
     bundle install
     rake db:setup
 
-Use [Foreman](http://goo.gl/oy4uw) to run the app locally.
+Start the app locally by typing:
 
-    foreman start
+    rails s
+    
+That's it! Your local version can be accessed by pointing your browser to www.lvh.me:3000/
 
-It uses your `.env` file and `Procfile` to run processes just like Heroku's
-[Cedar](https://devcenter.heroku.com/articles/cedar/) stack.
+If you need to run search code, start Solr (our search engine) with:
+
+    rake sunspot:solr:start
+
 
 
 Write a feature

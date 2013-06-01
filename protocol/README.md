@@ -12,7 +12,7 @@ Install homebrew (https://github.com/mxcl/homebrew/wiki/installation) and ImageM
     ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
     brew install ImageMagick
 
-Install RVM (https://rvm.io/rvm/install/) and app's Ruby dependencies
+Install RVM (https://rvm.io/rvm/install/) and app's Ruby dependencies. Navigate to the directory that contains the cloned repo.
 
     curl -L get.rvm.io | bash -s stable
     rvm install ruby-1.9.3-p392

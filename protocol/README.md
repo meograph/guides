@@ -74,7 +74,7 @@ Share your branch.
 
 Submit a [GitHub pull request](http://goo.gl/Kmdee). Include a link to the Asana ticket with the feature discussion.
 
-Ask for a code review in [Campfire](http://campfirenow.com).
+Ask for a code review in [Asana](http://app.asana.com).
 
 Review code
 -----------
